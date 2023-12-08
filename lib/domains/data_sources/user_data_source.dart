@@ -29,12 +29,10 @@ final List<User> mockUsers = [
 ];
 
 abstract class UserDataSource {
-  List<User> users();
+  List<User> getUsers();
 }
 
 class UserDataSourceImpl extends UserDataSource {
   @override
-  List<User> users() {
-    return mockUsers;
-  }
+  List<User> getUsers() => List.from(mockUsers);
 }

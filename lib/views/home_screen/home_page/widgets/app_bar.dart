@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:task_management/theme/app_theme.dart';
 
 class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -26,7 +27,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
                 style: appTheme.textTheme.bodyLarge,
               ),
               Text(
-                '21 Sept, 2023',
+                DateFormat('dd MMM, yyyy').format(DateTime.now()),
                 style: appTheme.textTheme.titleLarge,
               ),
             ],

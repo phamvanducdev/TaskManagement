@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:task_management/share/widgets/global_loading.dart';
@@ -20,7 +19,7 @@ class CreateTaskScreen extends StatefulWidget {
 }
 
 class _CreateTaskScreenState extends State<CreateTaskScreen> {
-  CreateTaskViewModel viewModel = GetIt.instance<CreateTaskViewModel>();
+  CreateTaskViewModel viewModel = CreateTaskViewModel();
 
   TextEditingController? _inputNameController;
   TextEditingController? _inputDescriptionController;
@@ -30,8 +29,8 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
     super.initState();
     _inputNameController = TextEditingController();
     _inputDescriptionController = TextEditingController();
-    viewModel.initialized();
 
+    viewModel.initialized();
     viewModel.streamCreateTaskState.listen((event) {
       switch (event) {
         case CreateTaskState.creating:

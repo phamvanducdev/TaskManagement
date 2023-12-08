@@ -10,13 +10,19 @@ class DataSourceRegister extends IGetItRegister {
   @override
   Future<void> register() async {
     if (!GetIt.I.isRegistered<UserDataSource>()) {
-      instance.registerSingleton<UserDataSource>(UserDataSourceImpl());
+      instance.registerLazySingleton<UserDataSource>(
+        () => UserDataSourceImpl(),
+      );
     }
     if (!GetIt.I.isRegistered<ProjectDataSource>()) {
-      instance.registerSingleton<ProjectDataSource>(ProjectDataSourceImpl());
+      instance.registerLazySingleton<ProjectDataSource>(
+        () => ProjectDataSourceImpl(),
+      );
     }
     if (!GetIt.I.isRegistered<TaskDataSource>()) {
-      instance.registerSingleton<TaskDataSource>(TaskDataSourceImpl());
+      instance.registerLazySingleton<TaskDataSource>(
+        () => TaskDataSourceImpl(),
+      );
     }
   }
 }

@@ -10,18 +10,17 @@ abstract class TaskRepository {
 class TasksRepositoryImpl extends TaskRepository {
   TaskDataSource taskDataSource = GetIt.instance<TaskDataSource>();
 
-  late final List<Task> _tasks = taskDataSource.tasks();
-
   @override
   Future<List<Task>> fetchTasks() async {
-    _tasks.sort((a, b) {
+    List<Task> tasks = List.from(taskDataSource.getTasks());
+    tasks.sort((a, b) {
       return -a.deadline.compareTo(b.deadline);
     });
-    return _tasks;
+    return tasks;
   }
 
   @override
   Future<void> addTask(Task task) async {
-    _tasks.add(task);
+    taskDataSource.addTask(task);
   }
 }

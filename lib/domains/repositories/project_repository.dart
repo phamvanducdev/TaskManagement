@@ -11,6 +11,6 @@ class ProjectRepositoryImpl extends ProjectRepository {
 
   @override
   Future<List<Project>> fetchProjects() async {
-    return projectDataSource.projects();
+    return projectDataSource.getProjects();
   }
 }

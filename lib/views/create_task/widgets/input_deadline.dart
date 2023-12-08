@@ -14,16 +14,20 @@ class InputDeadlineWidget extends StatelessWidget {
     required this.onTap,
   });
 
-  Future<void> onShowDatePicker(BuildContext context) async {
+  Future<void> onShowDatePicker(
+    BuildContext context,
+    DateTime initialDate,
+  ) async {
     DateTime? dateChanged = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: initialDate,
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(const Duration(days: 30)),
       helpText: "Select deadline date...",
-      fieldLabelText: "fieldLabelText",
     );
-    viewModel.onChangeDeadline(dateChanged ?? DateTime.now());
+    if (dateChanged != null) {
+      viewModel.onChangeDeadline(dateChanged);
+    }
   }
 
   @override
@@ -47,7 +51,7 @@ class InputDeadlineWidget extends StatelessWidget {
               InputTaskSelectionItemWidget(
                 value: DateFormat('MMMM dd, yyyy').format(deadline),
                 onTap: () {
-                  onShowDatePicker(context);
+                  onShowDatePicker(context, viewModel.deadline);
                 },
               ),
             ],

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:task_management/views/home_screen/home_page/home_page_view_model.dart';
 import 'package:task_management/views/home_screen/home_page/widgets/app_bar.dart';
 import 'package:task_management/views/home_screen/home_page/widgets/summary.dart';
@@ -15,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final HomePageViewModel viewModel = GetIt.instance<HomePageViewModel>();
+  HomePageViewModel viewModel = HomePageViewModel();
 
   @override
   void initState() {

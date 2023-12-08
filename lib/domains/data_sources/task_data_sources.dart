@@ -77,12 +77,16 @@ final List<Task> mockTasks = [
 ];
 
 abstract class TaskDataSource {
-  List<Task> tasks();
+  List<Task> getTasks();
+  void addTask(Task task);
 }
 
 class TaskDataSourceImpl extends TaskDataSource {
   @override
-  List<Task> tasks() {
-    return mockTasks;
+  List<Task> getTasks() => List.from(mockTasks);
+
+  @override
+  void addTask(Task task) {
+    mockTasks.add(task);
   }
 }

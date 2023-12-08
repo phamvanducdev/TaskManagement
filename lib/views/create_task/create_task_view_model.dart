@@ -41,6 +41,7 @@ class CreateTaskViewModel {
   final BehaviorSubject<DateTime> _streamDeadline =
       BehaviorSubject.seeded(DateTime.now());
   Stream<DateTime> get streamDeadline => _streamDeadline.stream;
+  DateTime get deadline => _streamDeadline.value;
 
   final BehaviorSubject<bool> _streamValidation = BehaviorSubject();
   Stream<bool> get streamValidation => _streamValidation.stream;
@@ -91,7 +92,9 @@ class CreateTaskViewModel {
 
   onValidate() {
     _streamValidation.add(
-      _streamTaskName.value.isNotEmpty &&
+      _streamTaskName.hasValue &&
+          _streamTaskName.value.isNotEmpty &&
+          _streamTaskDescription.hasValue &&
           _streamTaskDescription.value.isNotEmpty &&
           _streamProject.value != null &&
           _streamUsersAssign.value.isNotEmpty,

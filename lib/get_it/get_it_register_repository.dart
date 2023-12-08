@@ -10,13 +10,19 @@ class RepositoryRegister extends IGetItRegister {
   @override
   Future<void> register() async {
     if (!GetIt.I.isRegistered<UserRepository>()) {
-      instance.registerSingleton<UserRepository>(UserRepositoryImpl());
+      instance.registerLazySingleton<UserRepository>(
+        () => UserRepositoryImpl(),
+      );
     }
     if (!GetIt.I.isRegistered<ProjectRepository>()) {
-      instance.registerSingleton<ProjectRepository>(ProjectRepositoryImpl());
+      instance.registerLazySingleton<ProjectRepository>(
+        () => ProjectRepositoryImpl(),
+      );
     }
     if (!GetIt.I.isRegistered<TaskRepository>()) {
-      instance.registerSingleton<TaskRepository>(TasksRepositoryImpl());
+      instance.registerLazySingleton<TaskRepository>(
+        () => TasksRepositoryImpl(),
+      );
     }
   }
 }

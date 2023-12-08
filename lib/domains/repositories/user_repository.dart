@@ -11,6 +11,6 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<List<User>> fetchUsers() async {
-    return userDataSource.users();
+    return userDataSource.getUsers();
   }
 }

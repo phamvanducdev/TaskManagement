@@ -12,12 +12,10 @@ final List<Project> mockProjects = [
 ];
 
 abstract class ProjectDataSource {
-  List<Project> projects();
+  List<Project> getProjects();
 }
 
 class ProjectDataSourceImpl extends ProjectDataSource {
   @override
-  List<Project> projects() {
-    return mockProjects;
-  }
+  List<Project> getProjects() => List.from(mockProjects);
 }
